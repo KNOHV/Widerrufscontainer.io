@@ -1,0 +1,24 @@
+<button onclick="document.getElementById('widerruf-form').style.display='block'" style="padding: 10px 20px; background-color: #d9534f; color: white; border: none; cursor: pointer; border-radius: 5px;">
+  Widerruf einreichen
+</<div id="widerruf-form" style="display:none; margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; max-width: 500px;">
+  <h3>Widerrufsformular</h3>
+  <p>Bitte füllen Sie das Formular vollständig aus.</p>
+  
+  <form action="mailto:Reklamation@kummers-onlinehandel.de" method="post" enctype="text/plain" onsubmit="alert('Vielen Dank! Ihre Widerruf wird entgegengenommen.');">
+    <label>Anbieter:</label><br>
+    <textarea name="Anbieter(Verkaufsplattform)" style="width: 100%; margin-bottom: 10px;"></textarea><br>
+    <label>Bestellnummer:</label><br>
+    <input type="text" name="Bestellnummer" required style="width: 100%; margin-bottom: 10px;"><br>
+    <label>Name, Vorname:</label><br>
+    <input type="text" name="Name" required style="width: 100%; margin-bottom: 10px;"><br>
+    <label>E-Mail Adresse:</label><br>
+    <input type="email" name="Email" required style="width: 100%; margin-bottom: 10px;"><br>
+    
+   <
+    
+    <button type="submit" style="padding: 10px; background-color: #5cb85c; color: white; border: none; border-radius: 5px; width: 100%;">
+      Absenden & Bestätigen
+    </button>
+  </form>
+</div>
+

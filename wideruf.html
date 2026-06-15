@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertrag widerrufen - Kummers Onlinehandel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        h2 { margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover { background-color: #c9302c; }
+        .success-msg { display: none; text-align: center; }
+        .success-msg h3 { color: #28a745; }
+        #error-msg { color: #d9534f; margin-bottom: 15px; display: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="form-section">
+        <h2>Vertrag widerrufen</h2>
+        <p>Bitte füllen Sie das Formular aus, um Ihren Widerruf an uns zu übermitteln.</p>
+        
+        <div id="error-msg"></div>
+
+        <form id="widerrufForm">
+            <div class="form-group">
+                <label for="name">Vor- und Nachname</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="contractId">Bestell- oder Vertragsnummer</label>
+                <input type="text" id="contractId" name="contractId" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Ihre E-Mail-Adresse (für die Bestätigung)</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn" id="submitBtn">Jetzt widerrufen</button>
+        </form>
+    </div>
+
+    <div id="success-section" class="success-msg">
+        <h3>✓ Widerruf erfolgreich übermittelt</h3>
+        <p>Ihr Widerruf für die Bestellnummer <strong id="res-contractId"></strong> wurde elektronisch erfasst.</p>
+        <p>Wir haben Ihnen soeben eine Eingangsbestätigung an <strong id="res-email"></strong> gesendet.</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('widerrufForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        const errorMsg = document.getElementById('error-msg');
+        btn.innerText = 'Wird gesendet...';
+        btn.disabled = true;
+        errorMsg.style.display = 'none';
+
+        const formData = new FormData(this);
+
+        // Sendet die Daten an die PHP-Datei auf Ihrem Server
+        fetch('widerruf.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('res-contractId').innerText = document.getElementById('contractId').value;
+                document.getElementById('res-email').innerText = document.getElementById('email').value;
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('success-section').style.display = 'block';
+            } else {
+                throw new Error(data.error || 'Unbekannter Fehler');
+            }
+        })
+        .catch(error => {
+            errorMsg.innerText = 'Fehler: ' + error.message;
+            errorMsg.style.display = 'block';
+            btn.innerText = 'Jetzt widerrufen';
+            btn.disabled = false;
+        });
+    });
+</script>
+
+</body>
+</html>

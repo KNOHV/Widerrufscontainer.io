@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website im Aufbau | Demnächst verfügbar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 550px;
+            width: 100%;
+        }
+
+        .icon-container {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #57606f;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            height: 4px;
+            width: 60px;
+            background: #f39c12;
+            margin: 0 auto 25px auto;
+            border-radius: 2px;
+        }
+
+        .contact-info {
+            font-size: 0.95rem;
+            color: #2c3e50;
+            background: #f1f2f6;
+            padding: 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #a4b0be;
+        }
+
+        /* Kleine Animation für das Baustellen-Icon */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon-container">🚧</div>
+        <h1>Hier entsteht etwas Neues!</h1>
+        <div class="divider"></div>
+        <p>
+            Unsere Website befindet sich aktuell im Aufbau. Wir arbeiten unter Hochdruck daran, 
+            Ihnen bald unseren neuen Webauftritt zu präsentieren. Schauen Sie bald wieder vorbei!
+        </p>
+        
+        <div class="contact-info">
+            Sie haben Fragen? Schreiben Sie uns: <br>
+            <a href="mailto:info@deine-website.de">Kundenservice@kummers-onlinehandel.de</a>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Kummer-Neideck Online-Handel & Vertrieb\. Alle Rechte vorbehalten.
+        </div>
+    </div>
+
+</body>
+</html>
